@@ -262,7 +262,7 @@ def _merge(items: list[dict]) -> list[dict]:
         sig = f"{a['summary'] or a['text']}"
         twin = next(
             (m for m in out if m["symbol"] == a["symbol"] and m["category"] == a["category"]
-             and _is_mgmt_desc(m) == _is_mgmt_desc(a)  # a board-change letter never folds into a results card
+             and not (a["category"] == "results" and _is_mgmt_desc(m) != _is_mgmt_desc(a))  # a board-change letter never folds into a results card
              and abs((dt.date.fromisoformat(m["ts"][:10]) - dt.date.fromisoformat(a["ts"][:10])).days) <= 2
              and ((fuzz.token_set_ratio(sig, m["summary"] or m["text"]) >= 75 and len(sig) > 40)
                   or (_big_numbers(sig) & _big_numbers(m["summary"] or m["text"]))  # same "5,74,25,740 warrants"
