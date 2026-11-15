@@ -1,0 +1,24 @@
+{
+  "_note": "Mock portfolio: 18 NSE names across banks, NBFCs, IT, consumer, chemicals, industrials and internet; large caps and mid caps. Weights drive prioritisation — a filing at a 9% position outranks the same filing at a 2% position.",
+  "holdings": [
+    {"symbol": "HDFCBANK", "weight": 9.0},
+    {"symbol": "ICICIBANK", "weight": 8.0},
+    {"symbol": "RELIANCE", "weight": 7.5},
+    {"symbol": "TCS", "weight": 6.0},
+    {"symbol": "LT", "weight": 6.0},
+    {"symbol": "BAJFINANCE", "weight": 5.5},
+    {"symbol": "TITAN", "weight": 5.5},
+    {"symbol": "TRENT", "weight": 5.5},
+    {"symbol": "ASIANPAINT", "weight": 5.0},
+    {"symbol": "SUNPHARMA", "weight": 5.0},
+    {"symbol": "MARUTI", "weight": 5.0},
+    {"symbol": "DIXON", "weight": 5.0},
+    {"symbol": "ETERNAL", "weight": 4.5},
+    {"symbol": "PERSISTENT", "weight": 4.0},
+    {"symbol": "POLYCAB", "weight": 4.0},
+    {"symbol": "CHOLAFIN", "weight": 3.5},
+    {"symbol": "PIDILITIND", "weight": 3.0},
+    {"symbol": "DEEPAKNTR", "weight": 3.0}
+  ],
+  "research": ["KAYNES", "NAVINFLUOR", "CREDITACC", "CDSL"]
+}

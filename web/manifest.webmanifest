@@ -1,0 +1,9 @@
+{
+  "name": "FINN — investor intelligence",
+  "short_name": "FINN",
+  "start_url": "./#/brief",
+  "display": "standalone",
+  "background_color": "#f6f4ef",
+  "theme_color": "#0f5c4d",
+  "icons": []
+}

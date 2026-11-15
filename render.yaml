@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: finn
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      # Pin the clock to the committed data snapshot so the demo is deterministic even if
+      # NSE blocks the host's IP range. Remove to run fully live.
+      - key: FINN_ASOF
+        value: "2026-11-15T18:00:00"
+      # Optional: enables the model tier (Haiku 5.5 extraction, Opus 5.5 judgement).
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      # Optional: require ?t=<token> on every /api call (the network is personal data).
+      - key: FINN_TOKEN
+        sync: false
