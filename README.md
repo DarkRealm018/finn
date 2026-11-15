@@ -3,7 +3,7 @@
 Mobile-first prototype for the ENAM *Founding AI Engineer* build challenge.
 **Push** tells you what changed in your book and why it matters, **Pull** dissects any NSE company from its own filings and concall transcripts, and the **Network** shows up inside both: on every card, the person in your network who can explain it.
 
-> Live (backend): `<render-url>` · Static phone demo (no backend): https://darkrealm018.github.io/finn/
+> Live (backend): https://finn-jnm0.onrender.com · Static phone demo (no backend): https://darkrealm018.github.io/finn/
 > Open either on a phone. It is built for one-handed use.
 
 ![screens](docs/screens.png)

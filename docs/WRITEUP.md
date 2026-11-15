@@ -5,8 +5,11 @@ Hello ENAM team,
 
 Please find my submission for the FINN build challenge.
 
-- **Prototype (open on a phone):** `<render-url>` (live backend) · https://darkrealm018.github.io/finn/ (static fallback, no backend)
+- **Prototype (open on a phone):** https://finn-jnm0.onrender.com (live backend) · https://darkrealm018.github.io/finn/ (static fallback, no backend)
 - **Repository:** https://github.com/DarkRealm018/finn
+- **AI build history:** https://github.com/DarkRealm018/finn/blob/main/docs/AI_BUILD_HISTORY.md (the full Claude Code session, also attached as a file)
+
+The live link runs on Render's free tier, so the first request after it has been idle can take about 50 seconds to wake. If it's slow, the GitHub Pages link opens instantly from a frozen snapshot of the same data. On the live link, Research works for any NSE ticker: a first-time company takes about 30 seconds while FINN reads its filings and four concall transcripts, then it's cached.
 
 ## What I built
 
@@ -90,6 +93,18 @@ There is no autonomous agent loop, and I chose that deliberately. Every flow is 
 - **Today:** one small Python web service (Render free tier) serving API and client, plus a GitHub Pages static fallback.
 - **Production:** a scheduled ingest worker (EOD prices after 4pm IST, filings every few minutes during market hours) writing to Postgres and object storage; the API on a small container; web push notifications for triggered alerts; per-tenant encrypted storage for the network; and Anthropic's API, or the same models via Bedrock or Vertex for data-residency needs.
 
+## How I built it with AI
+
+I built FINN in one session with Claude Code (Claude Opus 5.5) as the implementing agent. The complete transcript is linked above: every prompt, shell command and file edit. My role was the brief, the direction, the review, and the steps that need a human (GitHub and Render logins, the campus proxy). The way of working the transcript shows:
+
+- **Probe before designing.** Before writing a line of product code we tested every source live. Yahoo worked. BSE blocks scripted access. NSE needs a browser-like session. screener.in has every statement and transcript link. The design follows what the data actually allows.
+- **Distrust the first answer.** Several obvious paths were wrong and were caught by checking real output, not by assuming:
+  - NSE's subject labels misfile results;
+  - the legacy results endpoint stops at Dec 2024, which led to finding the integrated-filing XBRL;
+  - the XBRL parser silently returned nothing because of a hyphenated namespace prefix.
+- **Verify like a user.** Every screen was screenshotted at phone width with a headless browser and corrected from what it actually showed: a duplicated ribbon, a clipped graph, a coverage map that called every holding "well covered".
+- **Let tests find what eyeballing can't.** Writing regression tests on real excerpts exposed two bugs that touched every document: the sentence splitter and a regex alternation.
+- **Refuse the shortcuts.** No LinkedIn scraping (synthetic network instead, real people only via their own filings), no model-generated numbers, and no bypassing the campus proxy when it blocked the deploy. We logged in properly instead.
 ## Deliberately left out
 
 - Real push notifications (alerts compute and badge, but nothing is sent to the OS yet).
@@ -109,5 +124,5 @@ There is no autonomous agent loop, and I chose that deliberately. Every flow is 
 Thank you for the thoughtful brief. I enjoyed building this.
 
 Best regards,
-`<your name>`
+Param Chauhan
 IIT Delhi
